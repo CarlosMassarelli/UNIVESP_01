@@ -39,4 +39,7 @@ def create_app(test_config=None):
     app.register_blueprint(consulta.bp)
     app.add_url_rule('/', endpoint='index')
 
+    from . import soma
+    app.register_blueprint(soma.bp)
+
     return app

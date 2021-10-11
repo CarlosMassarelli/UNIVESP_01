@@ -15,3 +15,13 @@ CREATE TABLE post (
   body TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
+
+CREATE TABLE soma (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    author_id INTEGER NOT NULL,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    temperatura INTEGER NOT NULL,
+    densidade FLOAT NOT NULL,
+    concentracao FLOAT NOT NULL,
+    FOREIGN KEY (author_id) REFERENCES user (id)
+);
