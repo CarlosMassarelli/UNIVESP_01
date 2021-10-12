@@ -24,21 +24,32 @@ def index():
 # @login_required
 def create():
     if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
+        temperatura = request.form['temperatura']
+        densidade = request.form['densidade']
         error = None
 
-        if not title:
-            error = 'Title is required.'
+        if not temperatura:
+            error = 'Temperatura é necessária.'
+
+        if not temperatura.isnumeric():
+            error = 'Temperatura deve ser um número'
+
+        temperatura = int(temperatura)
+
+
+
+
+
+
 
         if error is not None:
             flash(error)
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO post (title, body, author_id)'
+                'INSERT INTO resultado (temperatura, densidade, concentracao, author_id)'
                 ' VALUES (?, ?, ?)',
-                (title, body, g.user['id'])
+                (temperatura, densidade, concentracao, g.user['id'])
             )
             db.commit()
             return redirect(url_for('soma.resultados'))
