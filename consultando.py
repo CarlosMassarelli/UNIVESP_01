@@ -19,15 +19,14 @@ def getnearpos(array, value):
     idx = (np.abs(array-value)).idxmin()
     return idx
 
-
-temperatura = 26
-densidade = 1.2859
-
-print('Função principal :', concent(temperatura, densidade))
-
-
-
-
+#
+# temperatura = 26
+# densidade = 1.2859
+#
+# print('Função principal :', concent(temperatura, densidade))
+#
+#
+#
 # temp = 24
 # den = 1.2867
 #

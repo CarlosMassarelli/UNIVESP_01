@@ -5,6 +5,7 @@ from werkzeug.exceptions import abort
 
 from concentra.auth import login_required
 from concentra.db import get_db
+from consultando import concent
 
 bp = Blueprint('soma', __name__, url_prefix='/soma')
 
@@ -35,24 +36,21 @@ def create():
             error = 'Temperatura deve ser um número'
 
         temperatura = int(temperatura)
+        densidade = float(densidade)
 
-
-
-
-
-
+        concentracao = concent(temperatura, densidade)
 
         if error is not None:
             flash(error)
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO resultado (temperatura, densidade, concentracao, author_id)'
-                ' VALUES (?, ?, ?)',
+                'INSERT INTO soma (temperatura, densidade, concentracao, author_id)'
+                ' VALUES (?, ?, ?, ?)',
                 (temperatura, densidade, concentracao, g.user['id'])
             )
             db.commit()
-            return redirect(url_for('soma.resultados'))
+            return redirect(url_for('soma.index'))
 
     return render_template('soma/dados.html')
 

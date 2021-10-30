@@ -7,9 +7,9 @@
 {% block content %}
   <form method="post">
     <label for="temperatura">Temperatura</label>
-    <input name="temperatura" id="temperatura" value="{{ request.form['temperatura'] }}" required>
+    <input name="temperatura" id="temperatura" type="number" value="{{ request.form['temperatura'] }}" required>
     <label for="densidade">Densidade</label>
-    <input name="densidade" id="densidade">{{ request.form['densidade'] }}</input>
+    <input name="densidade" id="densidade" value="{{ request.form['densidade'] }}"> </input>
     <input type="submit" value="Save">
   </form>
 {% endblock %}
