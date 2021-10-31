@@ -7,18 +7,18 @@ from concentra.auth import login_required
 from concentra.db import get_db
 from consultando import concent
 
-bp = Blueprint('soma', __name__, url_prefix='/soma')
+bp = Blueprint('naoh', __name__)
 
 
-@bp.route('/resultados')
+@bp.route('/')
 def index():
     db = get_db()
     posts = db.execute(
-        'SELECT s.id, temperatura, densidade, concentracao, created, author_id, username'
-        ' FROM soma s JOIN user u ON s.author_id = u.id'
+        'SELECT r.id, temperatura, densidade, concentracao, created, author_id, username'
+        ' FROM resultado r JOIN user u ON r.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()
-    return render_template('soma/resultados.html', posts=posts)
+    return render_template('naoh/index.html', posts=posts)
 
 
 @bp.route('/dados', methods=('GET', 'POST'))
@@ -45,14 +45,14 @@ def create():
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO soma (temperatura, densidade, concentracao, author_id)'
+                'INSERT INTO resultado (temperatura, densidade, concentracao, author_id)'
                 ' VALUES (?, ?, ?, ?)',
                 (temperatura, densidade, concentracao, g.user['id'])
             )
             db.commit()
-            return redirect(url_for('soma.index'))
+            return redirect(url_for('naoh.index'))
 
-    return render_template('soma/dados.html')
+    return render_template('naoh/dados.html')
 
 #
 # def get_post(id, check_author=True):

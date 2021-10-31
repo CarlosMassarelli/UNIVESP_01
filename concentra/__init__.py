@@ -37,9 +37,9 @@ def create_app(test_config=None):
 
     from . import consulta
     app.register_blueprint(consulta.bp)
-    app.add_url_rule('/', endpoint='index')
 
-    from . import soma
-    app.register_blueprint(soma.bp)
+    from . import naoh
+    app.register_blueprint(naoh.bp)
+    app.add_url_rule('/', endpoint='index')
 
     return app

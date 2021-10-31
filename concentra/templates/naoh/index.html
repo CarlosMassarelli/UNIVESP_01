@@ -3,7 +3,7 @@
 {% block header %}
   <h1>{% block title %}Aferições{% endblock %}</h1>
   {% if g.user %}
-    <a class="action" href="{{ url_for('consulta.create') }}">New</a>
+    <a class="action" href="{{ url_for('naoh.create') }}">New</a>
   {% endif %}
 {% endblock %}
 
@@ -13,13 +13,13 @@
       <header>
         <div>
           <h1>{{ post['title'] }}</h1>
-          <div class="about">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
+          <div class="about">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }} / temp: {{ post['temperatura'] }} - den: {{ post['densidade'] }}</div>
         </div>
         {% if g.user['id'] == post['author_id'] %}
-          <a class="action" href="{{ url_for('consulta.update', id=post['id']) }}">Edit</a>
+<!--          <a class="action" href="{{ url_for('consulta.update', id=post['id']) }}">Edit</a>-->
         {% endif %}
       </header>
-      <p class="body">{{ post['concentracao'] }}</p>
+      <p class="body">Concentração: {{ post['concentracao'] }}</p>
     </article>
     {% if not loop.last %}
       <hr>

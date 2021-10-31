@@ -6,7 +6,7 @@ from werkzeug.exceptions import abort
 from concentra.auth import login_required
 from concentra.db import get_db
 
-bp = Blueprint('consulta', __name__)
+bp = Blueprint('consulta', __name__, url_prefix='/consulta')
 
 
 @bp.route('/')
@@ -17,7 +17,7 @@ def index():
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()
-    return render_template('consulta/index.html', posts=posts)
+    return render_template('consulta/posts.html', posts=posts)
 
 
 @bp.route('/create', methods=('GET', 'POST'))
