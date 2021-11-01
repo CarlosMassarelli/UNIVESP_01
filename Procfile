@@ -1,1 +1,1 @@
-web: flask db upgrade; gunicorn concentra:create
+web: flask db init; gunicorn concentra:create
