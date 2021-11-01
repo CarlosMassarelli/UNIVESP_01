@@ -1,1 +1,1 @@
-web: gunicorn --chdir concentra __init__:create
+web: gunicorn concentra:create
