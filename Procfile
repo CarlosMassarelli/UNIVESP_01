@@ -1,1 +1,1 @@
-web: gunicorn concentra:create_app
+web: gunicorn --bind 127.0.0.1:8000 concentra:create_app
