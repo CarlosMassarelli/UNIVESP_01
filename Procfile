@@ -1,1 +1,1 @@
-web: gunicorn concentra:app
+web: gunicorn concentra:create_app
