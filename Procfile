@@ -1,1 +1,1 @@
-web: flask db init; gunicorn concentra:create
+web: gunicorn concentra:create
