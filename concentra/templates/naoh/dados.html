@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Novo Cálculo{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="temperatura">Temperatura</label>
+    <input name="temperatura" id="temperatura" type="number" size="2" value="{{ request.form['temperatura'] }}" required>
+    <label for="densidade">Densidade</label>
+    <input name="densidade" id="densidade" size="6" value="{{ request.form['densidade'] }}" required> </input>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}
+

@@ -1,6 +1,6 @@
 # **Projeto Integrador 01 - UNIVESP**
 
-Projeto de PI da UNIVESP 2021
+Projeto Integrador da UNIVESP, do primeiro semestre do ano de 2021, equipe do polo de São Vicente.
 
 Serão descritos todos os passos para a criação do projeto, 
 incluindo detalhes de implementação backend e frontend.
@@ -20,6 +20,7 @@ Utilizaremos as seguintes dependências no projeto.
 ```
 Flask==2.0.2
 python-dotenv==0.19.1
+pandas==1.3.3
 ```
 
 Se você já souber criar e configurar seu ambiente virtual, pode pular este tópico.
